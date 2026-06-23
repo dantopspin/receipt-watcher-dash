@@ -14,6 +14,8 @@ import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ScanRouteImport } from './routes/scan'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ShareHallOfShameRouteImport } from './routes/share.hall-of-shame'
+import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
 import { Route as ItemIdRouteImport } from './routes/item.$id'
 
 const TrendsRoute = TrendsRouteImport.update({
@@ -41,6 +43,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShareHallOfShameRoute = ShareHallOfShameRouteImport.update({
+  id: '/share/hall-of-shame',
+  path: '/share/hall-of-shame',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalSlugRoute = LegalSlugRouteImport.update({
+  id: '/legal/$slug',
+  path: '/legal/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ItemIdRoute = ItemIdRouteImport.update({
   id: '/item/$id',
   path: '/item/$id',
@@ -54,6 +66,8 @@ export interface FileRoutesByFullPath {
   '/settings': typeof SettingsRoute
   '/trends': typeof TrendsRoute
   '/item/$id': typeof ItemIdRoute
+  '/legal/$slug': typeof LegalSlugRoute
+  '/share/hall-of-shame': typeof ShareHallOfShameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +76,8 @@ export interface FileRoutesByTo {
   '/settings': typeof SettingsRoute
   '/trends': typeof TrendsRoute
   '/item/$id': typeof ItemIdRoute
+  '/legal/$slug': typeof LegalSlugRoute
+  '/share/hall-of-shame': typeof ShareHallOfShameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +87,8 @@ export interface FileRoutesById {
   '/settings': typeof SettingsRoute
   '/trends': typeof TrendsRoute
   '/item/$id': typeof ItemIdRoute
+  '/legal/$slug': typeof LegalSlugRoute
+  '/share/hall-of-shame': typeof ShareHallOfShameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,8 +99,18 @@ export interface FileRouteTypes {
     | '/settings'
     | '/trends'
     | '/item/$id'
+    | '/legal/$slug'
+    | '/share/hall-of-shame'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/onboarding' | '/scan' | '/settings' | '/trends' | '/item/$id'
+  to:
+    | '/'
+    | '/onboarding'
+    | '/scan'
+    | '/settings'
+    | '/trends'
+    | '/item/$id'
+    | '/legal/$slug'
+    | '/share/hall-of-shame'
   id:
     | '__root__'
     | '/'
@@ -91,6 +119,8 @@ export interface FileRouteTypes {
     | '/settings'
     | '/trends'
     | '/item/$id'
+    | '/legal/$slug'
+    | '/share/hall-of-shame'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -100,6 +130,8 @@ export interface RootRouteChildren {
   SettingsRoute: typeof SettingsRoute
   TrendsRoute: typeof TrendsRoute
   ItemIdRoute: typeof ItemIdRoute
+  LegalSlugRoute: typeof LegalSlugRoute
+  ShareHallOfShameRoute: typeof ShareHallOfShameRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -139,6 +171,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/share/hall-of-shame': {
+      id: '/share/hall-of-shame'
+      path: '/share/hall-of-shame'
+      fullPath: '/share/hall-of-shame'
+      preLoaderRoute: typeof ShareHallOfShameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/$slug': {
+      id: '/legal/$slug'
+      path: '/legal/$slug'
+      fullPath: '/legal/$slug'
+      preLoaderRoute: typeof LegalSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/item/$id': {
       id: '/item/$id'
       path: '/item/$id'
@@ -156,6 +202,8 @@ const rootRouteChildren: RootRouteChildren = {
   SettingsRoute: SettingsRoute,
   TrendsRoute: TrendsRoute,
   ItemIdRoute: ItemIdRoute,
+  LegalSlugRoute: LegalSlugRoute,
+  ShareHallOfShameRoute: ShareHallOfShameRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
