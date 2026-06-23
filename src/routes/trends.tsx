@@ -6,7 +6,7 @@ import { AppShell } from "../components/AppShell";
 import { PaywallSheet } from "../components/PaywallSheet";
 import { useApp } from "../lib/store";
 import { aggregateItems } from "../lib/inflation";
-import { fmtUSD } from "../lib/format";
+
 
 export const Route = createFileRoute("/trends")({
   head: () => ({ meta: [{ title: "Spending Trends — ReceiptRage" }] }),
