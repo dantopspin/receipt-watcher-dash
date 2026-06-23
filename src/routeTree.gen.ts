@@ -9,38 +9,161 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TrendsRouteImport } from './routes/trends'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as ScanRouteImport } from './routes/scan'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ShareHallOfShameRouteImport } from './routes/share.hall-of-shame'
+import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
+import { Route as ItemIdRouteImport } from './routes/item.$id'
 
+const TrendsRoute = TrendsRouteImport.update({
+  id: '/trends',
+  path: '/trends',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScanRoute = ScanRouteImport.update({
+  id: '/scan',
+  path: '/scan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShareHallOfShameRoute = ShareHallOfShameRouteImport.update({
+  id: '/share/hall-of-shame',
+  path: '/share/hall-of-shame',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalSlugRoute = LegalSlugRouteImport.update({
+  id: '/legal/$slug',
+  path: '/legal/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ItemIdRoute = ItemIdRouteImport.update({
+  id: '/item/$id',
+  path: '/item/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/onboarding': typeof OnboardingRoute
+  '/scan': typeof ScanRoute
+  '/settings': typeof SettingsRoute
+  '/trends': typeof TrendsRoute
+  '/item/$id': typeof ItemIdRoute
+  '/legal/$slug': typeof LegalSlugRoute
+  '/share/hall-of-shame': typeof ShareHallOfShameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/onboarding': typeof OnboardingRoute
+  '/scan': typeof ScanRoute
+  '/settings': typeof SettingsRoute
+  '/trends': typeof TrendsRoute
+  '/item/$id': typeof ItemIdRoute
+  '/legal/$slug': typeof LegalSlugRoute
+  '/share/hall-of-shame': typeof ShareHallOfShameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/onboarding': typeof OnboardingRoute
+  '/scan': typeof ScanRoute
+  '/settings': typeof SettingsRoute
+  '/trends': typeof TrendsRoute
+  '/item/$id': typeof ItemIdRoute
+  '/legal/$slug': typeof LegalSlugRoute
+  '/share/hall-of-shame': typeof ShareHallOfShameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/onboarding'
+    | '/scan'
+    | '/settings'
+    | '/trends'
+    | '/item/$id'
+    | '/legal/$slug'
+    | '/share/hall-of-shame'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/onboarding'
+    | '/scan'
+    | '/settings'
+    | '/trends'
+    | '/item/$id'
+    | '/legal/$slug'
+    | '/share/hall-of-shame'
+  id:
+    | '__root__'
+    | '/'
+    | '/onboarding'
+    | '/scan'
+    | '/settings'
+    | '/trends'
+    | '/item/$id'
+    | '/legal/$slug'
+    | '/share/hall-of-shame'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  OnboardingRoute: typeof OnboardingRoute
+  ScanRoute: typeof ScanRoute
+  SettingsRoute: typeof SettingsRoute
+  TrendsRoute: typeof TrendsRoute
+  ItemIdRoute: typeof ItemIdRoute
+  LegalSlugRoute: typeof LegalSlugRoute
+  ShareHallOfShameRoute: typeof ShareHallOfShameRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/trends': {
+      id: '/trends'
+      path: '/trends'
+      fullPath: '/trends'
+      preLoaderRoute: typeof TrendsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scan': {
+      id: '/scan'
+      path: '/scan'
+      fullPath: '/scan'
+      preLoaderRoute: typeof ScanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +171,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/share/hall-of-shame': {
+      id: '/share/hall-of-shame'
+      path: '/share/hall-of-shame'
+      fullPath: '/share/hall-of-shame'
+      preLoaderRoute: typeof ShareHallOfShameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/$slug': {
+      id: '/legal/$slug'
+      path: '/legal/$slug'
+      fullPath: '/legal/$slug'
+      preLoaderRoute: typeof LegalSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/item/$id': {
+      id: '/item/$id'
+      path: '/item/$id'
+      fullPath: '/item/$id'
+      preLoaderRoute: typeof ItemIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  OnboardingRoute: OnboardingRoute,
+  ScanRoute: ScanRoute,
+  SettingsRoute: SettingsRoute,
+  TrendsRoute: TrendsRoute,
+  ItemIdRoute: ItemIdRoute,
+  LegalSlugRoute: LegalSlugRoute,
+  ShareHallOfShameRoute: ShareHallOfShameRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
