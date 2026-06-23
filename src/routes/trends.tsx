@@ -143,5 +143,3 @@ function demoVolatile() {
     { key: "bananas", name: "Bananas", pctChange: -3 },
   ];
 }
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const _unused = fmtUSD;
