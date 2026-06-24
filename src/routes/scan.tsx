@@ -146,13 +146,26 @@ function ScanPage() {
             >
               <div className="relative mt-2 aspect-[3/5] w-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-zinc-900 to-black">
                 {/* Receipt-shaped crop guide */}
-                <div className="absolute inset-6 rounded-xl border-2 border-dashed border-white/40" />
-                <div className="absolute inset-x-12 top-12 h-1 bg-accent/80 shadow-[0_0_24px_var(--color-accent)]" />
+                <div className="absolute inset-6 rounded-xl border border-white/15" />
+                {/* Corner ticks */}
+                {[
+                  "left-5 top-5 border-l-2 border-t-2",
+                  "right-5 top-5 border-r-2 border-t-2",
+                  "left-5 bottom-5 border-l-2 border-b-2",
+                  "right-5 bottom-5 border-r-2 border-b-2",
+                ].map((c, i) => (
+                  <span key={i} className={`absolute size-6 border-accent ${c}`} />
+                ))}
+                {/* Animated scan line */}
+                <div className="absolute inset-x-12 top-12 h-px overflow-visible">
+                  <div className="animate-scanline h-[2px] w-full bg-accent shadow-[0_0_24px_var(--color-accent)]" />
+                </div>
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
-                  <p className="font-mono text-[10px] uppercase tracking-widest opacity-60">Demo mode</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">Demo mode</p>
                   <p className="mt-1 text-xs opacity-80">Tap capture to simulate</p>
                 </div>
               </div>
+
 
               <button
                 onClick={capture}
