@@ -66,11 +66,14 @@ function TabBar({ pathname }: { pathname: string }) {
 
           <Link
             to="/scan"
-            className="group -mt-10 flex size-16 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-xl shadow-accent/30 ring-4 ring-background active:scale-95 transition-transform"
+            className="group relative -mt-10 flex size-16 items-center justify-center rounded-full bg-foreground text-background shadow-xl shadow-foreground/25 ring-4 ring-background active:scale-95 transition-transform"
             aria-label="Scan receipt"
           >
+            <span className="absolute -inset-1 -z-10 rounded-full bg-accent/35 blur-md" />
             <Camera className="size-7" strokeWidth={2.25} />
+            <span className="absolute -right-0.5 -top-0.5 size-2.5 rounded-full bg-accent ring-2 ring-background" />
           </Link>
+
 
           {tabs.slice(1).map((t) => (
             <TabItem key={t.to} {...t} active={t.match(pathname)} />
