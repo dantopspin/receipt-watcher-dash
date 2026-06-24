@@ -326,6 +326,17 @@ function Dashboard() {
   );
 }
 
+function monthYear() {
+  return new Date().toLocaleDateString("en-US", { month: "short", year: "numeric" }).toUpperCase();
+}
+function caseNumber(seed?: string) {
+  const base = seed ?? new Date().toISOString();
+  let h = 0;
+  for (let i = 0; i < base.length; i++) h = (h * 31 + base.charCodeAt(i)) >>> 0;
+  return (h % 9000 + 1000).toString();
+}
+
+
 function Skeleton() {
   return (
     <div className="animate-pulse space-y-6">
