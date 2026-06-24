@@ -109,6 +109,34 @@
     pointer-events: none;
   }
 
+  /* Subtle paper-grain used on share cards / evidence panels. */
+  .paper {
+    background-image:
+      radial-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
+      radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 3px 3px, 9px 9px;
+    background-position: 0 0, 1px 2px;
+  }
+  .paper-dark {
+    background-image:
+      radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 3px 3px, 9px 9px;
+    background-position: 0 0, 1px 2px;
+  }
+
+  /* Diagonal "case-stamp" outline */
+  .stamp {
+    border: 2px solid currentColor;
+    padding: 4px 10px;
+    border-radius: 4px;
+    transform: rotate(-6deg);
+    letter-spacing: 0.18em;
+    font-weight: 800;
+    text-transform: uppercase;
+    box-shadow: inset 0 0 0 1px currentColor;
+  }
+
   .scrollbar-none::-webkit-scrollbar { display: none; }
   .scrollbar-none { scrollbar-width: none; }
 }
@@ -118,6 +146,15 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 .animate-reveal { animation: slide-up 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+
+@keyframes scanline {
+  0%   { transform: translateY(0%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(2200%); opacity: 0; }
+}
+.animate-scanline { animation: scanline 2.4s cubic-bezier(.6,.05,.4,.95) infinite; }
+
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
