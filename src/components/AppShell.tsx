@@ -18,16 +18,20 @@ export function AppShell({ children, hideTabs, bare }: Props) {
         {!bare && (
           <header className="sticky top-0 z-40 flex items-center justify-between border-b border-border bg-background/85 px-6 pb-3 pt-[max(env(safe-area-inset-top),1rem)] backdrop-blur-xl">
             <Link to="/" className="flex items-center gap-2">
-              <span className="size-2 rounded-full bg-accent" aria-hidden />
-              <span className="font-mono text-[11px] font-medium uppercase tracking-tighter">
+              <span className="relative grid size-5 place-items-center rounded-[6px] bg-foreground text-background">
+                <span className="font-mono text-[9px] font-black leading-none">R</span>
+                <span className="absolute -right-0.5 -top-0.5 size-1.5 rounded-full bg-accent ring-2 ring-background" />
+              </span>
+              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.16em]">
                 ReceiptRage
               </span>
             </Link>
-            <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              Personal Index
-            </div>
+            <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-foreground">
+              Evidence Log
+            </span>
           </header>
         )}
+
 
         <motion.main
           key={pathname}
@@ -62,11 +66,14 @@ function TabBar({ pathname }: { pathname: string }) {
 
           <Link
             to="/scan"
-            className="group -mt-10 flex size-16 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-xl shadow-accent/30 ring-4 ring-background active:scale-95 transition-transform"
+            className="group relative -mt-10 flex size-16 items-center justify-center rounded-full bg-foreground text-background shadow-xl shadow-foreground/25 ring-4 ring-background active:scale-95 transition-transform"
             aria-label="Scan receipt"
           >
+            <span className="absolute -inset-1 -z-10 rounded-full bg-accent/35 blur-md" />
             <Camera className="size-7" strokeWidth={2.25} />
+            <span className="absolute -right-0.5 -top-0.5 size-2.5 rounded-full bg-accent ring-2 ring-background" />
           </Link>
+
 
           {tabs.slice(1).map((t) => (
             <TabItem key={t.to} {...t} active={t.match(pathname)} />
