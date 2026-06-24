@@ -1,16 +1,18 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Lock, Share2, Receipt } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Lock, Share2, Receipt } from "lucide-react";
 import { motion } from "framer-motion";
 import { AppShell } from "../components/AppShell";
 import { ConfidenceBadge } from "../components/ConfidenceBadge";
 import { PaywallSheet } from "../components/PaywallSheet";
+import { Sparkline } from "../components/Sparkline";
 import { useApp, realScanCount } from "../lib/store";
 import {
   aggregateItems, withOverspend, inflationScore, painIndex, painLabel,
   confidence, totalSpendBaselineVsCurrent,
 } from "../lib/inflation";
 import { fmtPct, fmtUSD, fmtDate, fmtDateLong } from "../lib/format";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
